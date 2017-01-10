@@ -1,26 +1,26 @@
-let React = require('react')
-    , ListItem = require('./ListItem.jsx');
+/**
+ * @description
+ * Unique identifiers to list items.
+ */
 
-let ingredients = [{
-    "id": 1
-    , "text": "ham"
-}, {
-    "id": 2
-    , "text": "cheese"
-}, {
-    "id": 3
-    , "text": "potatoes"
-}];
-
-let List = React.createClass({
+let React = require("react")
+    , ListItem = require("./ListItem.jsx")
+    , List = React.createClass({
     render: function () {
-        let listItems = ingredients.map((item) => {
-            return <ListItem key={item.id} ingredient={item.text} />
-        });
 
+        // Is called for every item in array
+        let createItem = function (text, index) {
+            return <ListItem key={index + text} text={text}/>
+        };
+
+        // Lets retrieve all items to create them here
+        // Items wasn't created yet, it'll come from list manager component as well
         return (
-            <ul>{listItems}</ul>
+            <ul>
+                {this.props.items.map(createItem)}
+            </ul>
         );
+
     }
 });
 
