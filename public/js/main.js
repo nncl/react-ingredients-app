@@ -20597,6 +20597,12 @@ let React = require('react'),
             marginTop: 10
         };
 
+        var headingStyle = {};
+
+        if (this.props.headingColor) {
+            headingStyle.background = this.props.headingColor;
+        }
+
         return React.createElement(
             'div',
             { style: divStyle, className: 'col-sm-4' },
@@ -20605,7 +20611,7 @@ let React = require('react'),
                 { className: 'panel panel-primary' },
                 React.createElement(
                     'div',
-                    { className: 'panel-heading' },
+                    { style: headingStyle, className: 'panel-heading' },
                     React.createElement(
                         'h3',
                         null,
@@ -20633,9 +20639,9 @@ let React = require('react'),
                                 'Add'
                             )
                         )
-                    ),
-                    React.createElement(List, { items: this.state.items })
-                )
+                    )
+                ),
+                React.createElement(List, { items: this.state.items })
             )
         );
     }
@@ -20650,5 +20656,7 @@ let React = require('react'),
 
 // render into screen
 ReactDOM.render(React.createElement(ListManager, { title: 'Ingredients' }), document.getElementById('l-ingredients'));
+ReactDOM.render(React.createElement(ListManager, { title: 'ToDo' }), document.getElementById('l-todo'));
+ReactDOM.render(React.createElement(ListManager, { title: 'XMAS', headingColor: '#a00' }), document.getElementById('l-xmas'));
 
 },{"./components/ListManager.jsx":185,"react":181,"react-dom":1}]},{},[186]);

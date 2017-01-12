@@ -44,11 +44,17 @@ let React = require('react')
                 marginTop: 10
             };
 
+            var headingStyle = {};
+
+            if (this.props.headingColor) {
+                headingStyle.background = this.props.headingColor;
+            }
+
             return (
                 <div style={divStyle} className="col-sm-4">
                     {/*reusable stuff here, so do not hardcode the title here*/}
                     <div className="panel panel-primary">
-                        <div className="panel-heading">
+                        <div style={headingStyle} className="panel-heading">
                             <h3>{this.props.title}</h3>
                         </div>
                         <div className="row panel-body">
@@ -61,8 +67,10 @@ let React = require('react')
                                     <button className="btn btn-primary">Add</button>
                                 </div>
                             </form>
-                            <List items={this.state.items}/>
                         </div>
+
+                        <List items={this.state.items}/>
+
                     </div>
                 </div>
             )
