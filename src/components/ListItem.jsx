@@ -10,7 +10,7 @@ let React = require('react')
     , ListItem = React.createClass({
     render: function () {
         return (
-            <li class="dd-m-list__item">
+            <li className="dd-m-list__item">
                 <h4>{this.props.text}</h4>
             </li>
         );
